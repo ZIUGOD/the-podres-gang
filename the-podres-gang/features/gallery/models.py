@@ -19,7 +19,7 @@ class Image(models.Model):
 
     image = models.ImageField(upload_to=f"gallery/images/")
     caption = models.CharField(max_length=128, blank=True, null=True)
-    pub_date = models.DateField(verbose_name="Uploaded at ", auto_now_add=True)
+    pub_date = models.DateField(verbose_name="Uploaded at", auto_now_add=True)
     description = models.TextField(blank=True, null=True, max_length=512)
 
     def __str__(self):

@@ -15,12 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path
-from features.gallery.views import home
+from django.contrib import admin  # mandatory import
+from django.contrib.auth.decorators import login_required, login_not_required
+from django.urls import path, include  # mandatory import
+from features.gallery.views import Home, About, CreateImage
 
 
 urlpatterns = [
+    path("", login_not_required(Home.as_view()), name="home"),
+    path("", include("django.contrib.auth.urls")),  # mandatory url
     path("admin/", admin.site.urls),  # mandatory url
-    path("image/", home, name="home"),  # custom url
+    path("image/", include("features.gallery.urls")),
+    path("about", login_not_required(About.as_view()), name="about"),
 ]

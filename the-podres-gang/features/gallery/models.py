@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 from django.db import models
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 
 class Image(models.Model):
@@ -53,11 +54,30 @@ class User(models.Model):
         was_logged_in_recently(): Returns True if the user has logged in within the last 7 days.
     """
 
-    username = models.CharField(max_length=24)
-    password = models.CharField(max_length=64)
-    email = models.EmailField(max_length=64)
-    first_name = models.CharField(max_length=64)
-    last_name = models.CharField(max_length=64)
+    username = models.CharField(
+        max_length=16,
+        unique=True,
+        validators=[
+            MinLengthValidator(6, "Your username must be at least 6 characters long."),
+            MaxLengthValidator(16, "Your username must be at most 16 characters long."),
+        ],
+        error_messages={"unique": "This username is already taken."},
+    )
+    password = models.CharField(
+        max_length=64,
+        validators=[
+            MinLengthValidator(
+                12, "Your password must be at least 12 characters long."
+            ),
+            MaxLengthValidator(
+                64,
+                "Your password must be at most 64 characters long.",
+            ),
+        ],
+    )
+    email = models.EmailField(max_length=32)
+    first_name = models.CharField(max_length=16)
+    last_name = models.CharField(max_length=24)
     date_joined = models.DateField(auto_now_add=True)
     last_login = models.DateField(auto_now=True)
     is_staff = models.BooleanField(default=False)

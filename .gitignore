@@ -83,3 +83,4 @@ cython_debug/
 .idea/
 .pypirc
 /gallery/
+*/static_django

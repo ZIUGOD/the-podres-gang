@@ -84,3 +84,5 @@ cython_debug/
 .pypirc
 /gallery/
 */static_django
+test.*
+tpg/*

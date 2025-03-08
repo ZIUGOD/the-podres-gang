@@ -1,0 +1,31 @@
+{% extends "components/base.html" %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/gallery/index.css' %}" />
+{% endblock head %}
+{% block title %}
+    - Início
+{% endblock title %}
+{% block content %}
+    <div class="container text-center py-5">
+        <h2 class="gallery__title display-6">Galeria The Podres Gang</h2>
+        <div class="gallery shadow-lg rounded-4 p-1">
+            <div class="gallery__images">
+                {% if images %}
+                    {% for image in images %}
+                        <div class="gallery__item shadow p-1">
+                            <img src="{{ image.image.url }}"
+                                 alt="{{ image.caption }}"
+                                 class="gallery__image shadow-lg rounded-3"
+                                 loading="lazy"
+                                 height="auto"
+                                 width="auto" />
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="gallery__empty">No images found</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

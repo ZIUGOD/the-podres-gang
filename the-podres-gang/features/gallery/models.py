@@ -1,57 +1,47 @@
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxLengthValidator
+
+
+def image_upload_path(instance, filename):
+    return f"the-podres-gang/features/gallery/images/{instance.pub_date}/{filename}"
 
 
 class Image(models.Model):
     """
     Model representing an image in the gallery.
-
-    Attributes:
-        image (ImageField): The image file, stored in the "gallery/images/" directory.
-        caption (CharField): A short caption for the image, with a maximum length of 128 characters.
-        pub_date (DateField): The date the image was uploaded, automatically set to the current date.
-        description (TextField): An optional description of the image, with a maximum length of 512 characters.
-
-    Methods:
-        __str__(): Returns the caption of the image.
-        was_published_recently(): Returns True if the image was published within the last day, otherwise False.
     """
 
-    image = models.ImageField(upload_to=f"gallery/images/")
-    caption = models.CharField(max_length=128, blank=True, null=True)
+    image = models.ImageField(upload_to=image_upload_path)
+    caption = models.CharField(
+        max_length=128,
+        blank=True,
+        null=True,
+        unique=False,
+        validators=[
+            MaxLengthValidator(128, "Your caption must be at most 128 characters long."),
+        ]
+    )
     pub_date = models.DateField(verbose_name="Uploaded at", auto_now_add=True)
-    description = models.TextField(blank=True, null=True, max_length=512)
+    description = models.TextField(blank=True, null=True, validators=[MaxLengthValidator(512)])
 
     def __str__(self):
-        """Returns the caption of the image."""
-        return self.caption
+        """Returns a string representation of the object."""
+        return self.caption or "Image with no caption."
 
     def was_published_recently(self):
         """Checks if the image was published within the last day."""
-        return self.pub_date >= date.today() - timedelta(days=1)
+        return self.pub_date >= (datetime.now().date() - timedelta(days=1))
+
+    class Meta:
+        ordering = ["-pub_date"]
+        verbose_name = "Image"
+        verbose_name_plural = "Images"
 
 
 class User(models.Model):
     """
     A Django model representing a user.
-
-    Attributes:
-        username (str): The username of the user. Maximum length is 24 characters.
-        password (str): The password of the user. Maximum length is 64 characters.
-        email (str): The email address of the user. Maximum length is 64 characters.
-        first_name (str): The first name of the user. Maximum length is 64 characters.
-        last_name (str): The last name of the user. Maximum length is 64 characters.
-        date_joined (date): The date when the user joined. Automatically set to the current date.
-        last_login (date): The date when the user last logged in. Automatically updated to the current date.
-        is_staff (bool): A boolean indicating whether the user is a staff member. Default is False.
-        images (Image): A foreign key to the Image model. Can be null or blank.
-
-    Methods:
-        __str__(): Returns the username of the user.
-        get_full_name(): Returns the full name of the user.
-        get_short_name(): Returns the first name of the user.
-        was_logged_in_recently(): Returns True if the user has logged in within the last 7 days.
     """
 
     username = models.CharField(
@@ -62,26 +52,23 @@ class User(models.Model):
             MaxLengthValidator(16, "Your username must be at most 16 characters long."),
         ],
         error_messages={"unique": "This username is already taken."},
+        verbose_name="Username",
     )
     password = models.CharField(
         max_length=64,
         validators=[
-            MinLengthValidator(
-                12, "Your password must be at least 12 characters long."
-            ),
-            MaxLengthValidator(
-                64,
-                "Your password must be at most 64 characters long.",
-            ),
+            MinLengthValidator(12, "Your password must be at least 12 characters long."),
+            MaxLengthValidator(64, "Your password must be at most 64 characters long."),
         ],
+        verbose_name="Password",
     )
-    email = models.EmailField(max_length=32)
-    first_name = models.CharField(max_length=16)
-    last_name = models.CharField(max_length=24)
-    date_joined = models.DateField(auto_now_add=True)
-    last_login = models.DateField(auto_now=True)
-    is_staff = models.BooleanField(default=False)
-    images = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, blank=True)
+    email = models.EmailField(unique=True, verbose_name="Email")
+    first_name = models.CharField(max_length=16, verbose_name="First Name")
+    last_name = models.CharField(max_length=24, verbose_name="Last Name")
+    date_joined = models.DateField(auto_now_add=True, verbose_name="Date Joined")
+    last_login = models.DateField(auto_now=True, verbose_name="Last Login")
+    is_staff = models.BooleanField(default=False, verbose_name="Staff Member")
+    images = models.ManyToManyField(Image, blank=True, related_name="users")
 
     def __str__(self):
         """Returns the username of the user."""

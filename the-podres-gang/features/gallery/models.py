@@ -3,16 +3,12 @@ from django.db import models
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 
-def image_upload_path(instance, filename):
-    return f"the-podres-gang/features/gallery/images/{instance.pub_date}/{filename}"
-
-
 class Image(models.Model):
     """
     Model representing an image in the gallery.
     """
 
-    image = models.ImageField(upload_to=image_upload_path)
+    image = models.ImageField()
     caption = models.CharField(
         max_length=128,
         blank=True,

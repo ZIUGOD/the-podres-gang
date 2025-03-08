@@ -85,4 +85,4 @@ cython_debug/
 /gallery/
 */static_django
 test.*
-tpg/*
+media/

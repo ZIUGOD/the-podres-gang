@@ -1,0 +1,112 @@
+{% extends "components/base.html" %}
+{% load static %}
+{% block head %}
+    <title>TPG | Sobre a TPG</title>
+{% endblock head %}
+{% block content %}
+    <h2 class="about__title display-6 text-center my-5">Sobre a TPG</h2>
+    <div class="container">
+        <div class="p-0">
+            <h3 class="about__subtitle text-center">História</h3>
+            <p class="about__text">{% lorem 1 %}</p>
+            <p class="about__text">{% lorem 1 %}</p>
+            <p class="about__text">{% lorem 1 %}</p>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <h3 class="text-center">Membros</h3>
+                <ol class="list-group list-group-numbered rounded-4 shadow-lg p-1">
+                    <li class="list-group-item">
+                        ZIUGOD
+                        <div class="social-links d-flex justify-content-start">
+                            <a href="https://github.com/ZIUGOD"
+                               target="_blank"
+                               class="text-dark my-1 mx-2"><i class="fa-brands fa-github fs-4"></i></a>
+                            <a href="https://www.instagram.com/DrTrabson"
+                               target="_blank"
+                               class="text-dark my-1 mx-2"><i class="fa-brands fa-instagram fs-4"></i></a>
+                            <a href="https://www.linkedin.com/in/caiqueengsoftware/"
+                               target="_blank"
+                               class="text-dark my-1 mx-2"><i class="fa-brands fa-linkedin fs-4"></i></a>
+                            <a href="https://x.com/ZIUGOD"
+                               target="_blank"
+                               class="text-dark my-1 mx-2"><i class="fa-brands fa-x-twitter fs-4"></i></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Dr. Trabson
+                        <div class="social-links d-flex justify-content-start">
+                            <a href="https://www.instagram.com/DrTrabson"
+                               target="_blank"
+                               class="text-dark my-1 mx-2">
+                                <i class="fa-brands fa-instagram fs-4"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Pedro HFR Lixo
+                        <div class="social-links d-flex justify-content-start">
+                            <a href="https://www.instagram.com/pedro_h.f.r/"
+                               target="_blank"
+                               class="text-dark my-1 mx-2"><i class="fa-brands fa-instagram fs-4"></i></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Artu The King of Otakus
+                        <div class="social-links d-flex justify-content-start">
+                            <a href="https://www.instagram.com/artuzadaxd/"
+                               target="_blank"
+                               class="text-dark my-1 mx-2">
+                                <i class="fa-brands fa-instagram fs-4"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Gabas
+                        <div class="social-links d-flex justify-content-start">
+                            <a href="https://www.instagram.com/gabs.veloso/"
+                               target="_blank"
+                               class="text-dark my-1 mx-2">
+                                <i class="fa-brands fa-instagram fs-4"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Lucas Arromba Gringo
+                        <div class="social-links d-flex justify-content-start">
+                            <a href="https://www.instagram.com/lucasccunha1/"
+                               target="_blank"
+                               class="text-dark my-1 mx-2">
+                                <i class="fa-brands fa-instagram fs-4"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        Gohan padre
+                        <div class="social-links d-flex justify-content-start">
+                            <a href="https://www.instagram.com/marcos17_crf/"
+                               target="_blank"
+                               class="text-dark my-1 mx-2">
+                                <i class="fa-brands fa-instagram fs-4"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-12 col-md-6">
+                <h3 class="text-center">Regras da TPG</h3>
+                <ol class="list-group list-group-numbered rounded-4 shadow-lg p-1">
+                    <li class="list-group-item">🚫 PROIBIDO TRAFEGAR RUAS COM VEÍCULOS AUTOMOTORES ENQUANTO ESTIVER ÉBRIO</li>
+                    <li class="list-group-item">🚫 PROIBIDO COMER EDINHO COM FREQUÊNCIA</li>
+                    <li class="list-group-item">🚫 PROIBIDO GAY HOMOSSEXUAL BOIOLA VIADO 🏳️‍🌈</li>
+                    <li class="list-group-item">🚫 PROIBIDO MULHERES</li>
+                    <li class="list-group-item">🚫 PROIBIDO SÃO PAULINO EXCETO LUCAS</li>
+                    <li class="list-group-item">🚫 PROIBIDO COMPACTUAR COM TIMES DA COR VERDE</li>
+                    <li class="list-group-item">🚫 PROIBIDO FALAR DE MULHERES NA PRESENÇA DO PEDRO</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+{% endblock content %}

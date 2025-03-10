@@ -20,7 +20,7 @@ from django.contrib.auth.decorators import login_required, login_not_required
 from django.urls import path, include  # mandatory import
 from django.conf.urls.static import static
 from django.conf import settings
-from features.gallery.views import Home, About, CreateImage
+from features.gallery.views import Home, About
 
 
 urlpatterns = [
@@ -28,5 +28,5 @@ urlpatterns = [
     path("", include("django.contrib.auth.urls")),  # mandatory url
     path("admin/", admin.site.urls),  # mandatory url
     path("image/", include("features.gallery.urls")),
-    path("about", login_not_required(About.as_view()), name="about"),
+    path("about/", login_not_required(About.as_view()), name="about"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

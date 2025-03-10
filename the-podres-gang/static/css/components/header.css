@@ -1,0 +1,12 @@
+.logo-custom {
+    width: 6em;
+    height: auto;
+    max-height: 6em;
+}
+
+@media (max-width: 576px) {
+    .logo-custom {
+        width: 5em;
+        max-height: 5em;
+    }
+}

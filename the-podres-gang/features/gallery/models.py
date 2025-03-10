@@ -18,7 +18,7 @@ class Image(models.Model):
             MaxLengthValidator(128, "Your caption must be at most 128 characters long."),
         ]
     )
-    pub_date = models.DateField(verbose_name="Uploaded at", auto_now_add=True)
+    pub_date = models.DateTimeField(verbose_name="Uploaded at", auto_now_add=True)
     description = models.TextField(blank=True, null=True, validators=[MaxLengthValidator(512)])
 
     def __str__(self):

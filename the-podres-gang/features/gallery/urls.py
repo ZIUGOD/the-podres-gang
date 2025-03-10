@@ -9,7 +9,7 @@ urlpatterns = [
         name="create_image",
     ),
     path(
-        "<int:image_id>/",
+        "<int:pk>/",
         login_not_required(DetailImage.as_view()),
         name="detail_image",
     ),

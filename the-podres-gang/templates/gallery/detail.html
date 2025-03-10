@@ -1,1 +1,37 @@
-
+{% extends "components/base.html" %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/gallery/detail.css' %}" />
+    {% if image.caption %}
+        <title>TPG | {{ image.caption }}</title>
+    {% else %}
+        <title>TPG | Detalhe de imagem</title>
+    {% endif %}
+{% endblock head %}
+{% block content %}
+    {% if image.caption %}
+        <h2 class="gallery__title display-6 text-center my-5">{{ image.caption }}</h2>
+    {% else %}
+        <h1 class="gallery__title display-6 text-center my-5">Detalhes de imagem</h1>
+    {% endif %}
+    <div class="container text-center p-2 rounded-4 shadow-lg">
+        <div class="row row-cols-1">
+            <div class="col rounded-4">
+                <div class="gallery__item rounded-4">
+                    <img src="{{ image.image.url }}"
+                         class="gallery__image rounded-4"
+                         alt="{{ image.caption }}"
+                         loading="lazy"
+                         width="100%"
+                         height="100%" />
+                    <div>
+                        <span class="gallery__date shadow">{{ image.pub_date|date:"l d/m/Y - G:s" }}</span>
+                    </div>
+                </div>
+                {% if image.description %}
+                    <p class="gallery__description">{{ image.description|safe|default:"Imagem sem descrição" }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

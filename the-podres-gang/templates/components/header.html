@@ -1,6 +1,33 @@
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/components/header.css' %}" />
+{% endblock head %}
 {% block header %}
-    <header class="bg-dark text-white text-center py-4">
-        <h1>TPG</h1>
-        <span class="lead">The Podres Gang</span>
+    <header class="bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
+            <div class="container">
+                <a href="{% url 'home' %}" class="navbar-brand text-light lead">
+                    <img src="{% static 'image/tpg_logo.ico' %}"
+                         class="img-fluid logo-custom"
+                         alt="TPG logo" />
+                </a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-end" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="{% url 'about' %}" class="nav-link text-light">Sobre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 {% endblock header %}

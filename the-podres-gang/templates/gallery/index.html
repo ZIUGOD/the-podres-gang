@@ -12,13 +12,16 @@
             {% if images %}
                 {% for image in images %}
                     <div class="col rounded-4">
-                        <div class="gallery__item rounded-4">
-                            <img src="{{ image.image.url }}"
-                                 class="gallery__image rounded-4"
-                                 alt="{{ image.caption }}"
-                                 loading="lazy"
-                                 width="100%"
-                                 height="100%" />
+                        <div class="gallery__item rounded-4"
+                             title="{{ image.caption|default:'Imagem sem título' }}">
+                            <a href="{% url 'detail_image' image.pk %}">
+                                <img src="{{ image.image.url }}"
+                                     class="gallery__image rounded-4"
+                                     alt="{{ image.caption }}"
+                                     loading="lazy"
+                                     width="100%"
+                                     height="100%" />
+                            </a>
                         </div>
                     </div>
                 {% endfor %}

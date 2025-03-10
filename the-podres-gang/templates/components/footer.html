@@ -4,19 +4,40 @@
     <script src="{% static 'js/components/footer.js' %}"></script>
 {% endblock head %}
 {% block footer %}
-    <footer class="bg-dark text-white mt-5 py-4">
-        <div class="container text-center">
+    <footer class="bg-dark text-white mt-5 py-4 px-2">
+        <div class="container">
             <div class="row gy-4 d-flex justify-content-center">
                 <!-- About Us -->
-                <div class="col-md-4 py-2">
+                <div class="col-md-4 py-2 text-center">
                     <h5>About Us</h5>
                     <p class="small">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis consectetur justo non condimentum.
-                        Nam non tempor ante. Phasellus eget lectus vel felis feugiat viverra. Vestibulum non sem leo.
+                        Um (quase) engenheiro que escreve códigos e destinos. Um médico que conhece tanto a cura quanto o caos. Um advogado que divide seu tempo entre animes e academia. Um ex-enfermeiro que trocou seringas por doses duplas. Um programador que enxerga além das linhas de código. Um banqueiro gringo que joga no time do dinheiro. E um devoto do CR7 que quase virou padre.
                     </p>
                 </div>
+                <!-- ZIUGOD and TPG Social Media -->
+                <div class="col-md-4 py-2 text-center">
+                    <h5 class="text-info">ZIUGOD</h5>
+                    <div class="d-flex justify-content-center gap-4 mb-3">
+                        <a href="https://github.com/ZIUGOD/" target="_blank" class="text-white">
+                            <i class="fa-brands fa-github fs-4"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ziu.bat"
+                           target="_blank"
+                           class="text-white">
+                            <i class="fa-brands fa-instagram fs-4"></i>
+                        </a>
+                    </div>
+                    <h5 class="text-info my-3">TPG</h5>
+                    <div class="d-flex justify-content-center gap-4">
+                        <a href="https://github.com/ZIUGOD/the-podres-gang"
+                           target="_blank"
+                           class="text-white">
+                            <i class="fa-brands fa-github fs-4"></i>
+                        </a>
+                    </div>
+                </div>
                 <!-- Contact -->
-                <div class="col-md-4 py-2">
+                <div class="col-md-4 py-2 text-center">
                     <h5>Contact</h5>
                     <p class="mb-1">
                         <i class="bi bi-envelope"></i> info@example.com
@@ -25,22 +46,10 @@
                         <i class="bi bi-telephone"></i> +123 456 7890
                     </p>
                 </div>
-                <!-- ZIUGOD Social Media -->
-                <div class="col-md-4 py-2">
-                    <h5 class="text-info">ZIUGOD</h5>
-                    <div class="d-flex justify-content-center gap-4">
-                        <a href="https://github.com/ZIUGOD/" target="_blank" class="text-white">
-                            <i class="fa-brands fa-github fs-4"></i>
-                        </a>
-                        <a href="https://www.instagram.com/ziu.bat"
-                           target="_blank"
-                           class="text-white">
-                            <i class="fa-brands fa-instagram fs-4"></i></a>
-                    </div>
-                </div>
             </div>
-            <!-- Copyright -->
-            <span id="footer-copyright" class="small mb-0"></span>
+            <div class="text-center mb-5">
+                <span id="footer-copyright" class="small"></span>
+            </div>
         </div>
     </footer>
 {% endblock footer %}

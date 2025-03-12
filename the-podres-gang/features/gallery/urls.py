@@ -4,7 +4,7 @@ from features.gallery.views import CreateImage, DetailImage
 
 urlpatterns = [
     path(
-        "create/",
+        "create",
         login_required(CreateImage.as_view()),
         name="create_image",
     ),

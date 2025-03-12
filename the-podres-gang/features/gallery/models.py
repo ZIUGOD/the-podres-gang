@@ -8,7 +8,6 @@ class Image(models.Model):
     Model representing an image in the gallery.
     """
 
-    image = models.ImageField()
     caption = models.CharField(
         max_length=128,
         blank=True,
@@ -18,8 +17,9 @@ class Image(models.Model):
             MaxLengthValidator(128, "Your caption must be at most 128 characters long."),
         ]
     )
-    pub_date = models.DateTimeField(verbose_name="Uploaded at", auto_now_add=True)
+    image = models.ImageField()
     description = models.TextField(blank=True, null=True, validators=[MaxLengthValidator(512)])
+    pub_date = models.DateTimeField(verbose_name="Uploaded at", auto_now_add=True)
 
     def __str__(self):
         """Returns a string representation of the object."""

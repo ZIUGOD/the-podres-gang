@@ -26,6 +26,8 @@ from features.gallery.views import Home, About
 urlpatterns = [
     path("", login_not_required(Home.as_view()), name="home"),
     path("", include("django.contrib.auth.urls")),  # mandatory url
+    path("login/", login_not_required(Home.as_view()), name="login_page"),
+    path("logout/", login_required(Home.as_view()), name="logout_page"),  # mandatory url
     path("admin/", admin.site.urls),  # mandatory url
     path("image/", include("features.gallery.urls")),
     path("about/", login_not_required(About.as_view()), name="about"),
